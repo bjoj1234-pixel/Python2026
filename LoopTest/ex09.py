@@ -27,7 +27,7 @@ while True:
         success += 1
     elif check == "N":
         print("→ 미완료")
-        # fail.push(i)
+        fail.append(i)
     else:
         print("→ Y or N으로 재입력 요망")
         continue
@@ -39,4 +39,14 @@ if success == 5:
     print("배포 승인! 배포를 진행하세요.")
 else:
     print(f"배포 보류! {5-success}개 항목을 해결 후 재시도하세요.'")
-    print(fail)
+    for j in fail:
+        if j == 1:
+            print(f"[{j}/5] DB 마이그레이션 완료 여부")
+        elif j == 2:
+            print(f"[{j}/5]  application-prod.properties 설정 확인")
+        elif j == 3:
+            print(f"[{j}/5]  JWT Secret Key 변경 여부")
+        elif j == 4:
+            print(f"[{j}/5] CORS 허용 도메인 설정 완료")
+        elif j == 5:
+            print(f"[{j}/5] API 엔드포인트 테스트 통과")
